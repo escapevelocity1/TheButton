@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <body bgcolor=#444444></body>
+<style>
+  body {
+  overflow: hidden; /*hide scrollbar*/
+}
+.button {
+  border-style: dash; /*decorate button*/
+  border-width: 5px;
+  border-radius: 20px;
+  border-color: #aaaaaa;
+  padding: 50px 50px;
+  max-width: 50px;
+  max-height: 50px;
+  display: inline-block;
+  margin: 30px 10px;
+  cursor: pointer;
+  position: relative;
+  z-index: 5;
+ }
+ .itembutton {
+   border-style: dash;
+   border-width: 3px;
+   border-radius: 2px;
+   border-color: #aaaacc;
+   padding: 10px 10px;
+   position: relative; top: 280px; right: 120px;
+   background-color: #444444;
+   cursor: crosshair;
+ }
+  @keyframes pulse {
+  0% {
+    background-color: #aa2222; /* animate main button */
+  }
+  50% {
+    background-color: #cc2222;
+    }
+  100% {
+    background-color: #aa2222;
+    }
+}
+  .button {
+    animation: pulse 1s infinite;
+  }
+  @keyframes pulse2 {
+    0% {
+      color: white;
+    }
+    50% {
+      color: #ffff88;
+    }
+    100% {
+      color: white;
+    }
+  }
+  
+  @keyframes poverty {
+    0% {
+      background-color: #444444;
+    }
+    50% {
+      background-color: #cc2222;
+    }
+    100% {
+      background-color: #444444;
+    }
+  }
+  .top {
+border-bottom: 5px solid #656575; /*top gray bar*/
+background-color: gray;
+height: 150px;
+width: 105%;
+margin: -60px -8px -10px -8px;
+}
+
+  .store {
+border-top: 5px solid #656575; /*bottom blue bar, to contain the store*/
+background-color: #545464;
+height: 150px;
+width: 105%;
+margin: 155px -8px -10px -8px;
+  }
+  .decor {
+border-top: 5px solid #4545; /*middle decorative gray bar*/
+border-bottom: 5px solid #4545;
+background-color: #343434;
+height: 150px;
+width: 105%;
+position: relative; bottom: 385px; right: 19px;
+z-index: 1;
+  }  
+</style>
+  <body>
+    <p1 id="counter" 
+  style="margin:15px;color:white;font-family:calibri;font-size:40px;background-color:#222222;
+  border-style:solid;border-width:2px;border-color:#656575";>0</p1>
+   <p2 id="gainCounter" 
+   style="margin:15px;color:white;font-family:calibri;font-size:20px;background-color:#222222;
+   border-style:solid;border-width:2px;border-color:#656575;position:relative;top:32px;right:153px;
+   animation:pulse2 2s infinite;">1x</p2>
+
+    <div class="top"></div>
+    <button class="button" id="b1"></button>
+    <!--Make item buttons be hidden by default when that point is reached-->
+    <button class="itembutton" id="b2" style="font-family:calibri;animation:pulse2 2s infinite;position:relative;right:120px">x2</button>
+    <button class="itembutton" id="b3" style="font-family:calibri;color:#9999ff;position:relative;top:330px;right:163px">1/s</button>
+  <p3 id="message"
+  style="font-family: Verdana;font-size:20px;color:white;position:relative;bottom:15px"></p3>
+
+    <div class="store"></div>
+    <div class="decor"></div>
+  <p4 id="storeText" style="font-family: Verdana;color:white;position:relative;bottom:280px;left:60px;display:none">Click Multiplier</p4>
+
+<script>
+  // basic variables
+ var clicks = 0; 
+ var clickGain = 1; //"clicks gained per click", changing affects multiplier
+ var Progression = 0;
+ // variables for typewriter animation
+ var i = 0;
+ var txt = "It appears you don't have anything better to do.";
+ var speed = 20;
+ // variables for items
+ var cost1 = 8;
+
+    document.getElementById("b1").onclick = clickA;
+    document.getElementById("b2").onclick = clickB; // click upgrade 
+   
+    // the main click function
+    function clickA(){
+      clicks += clickGain;
+       document.getElementById("counter").innerHTML =clicks + " clicks"
+       if (clicks >= 15) {typeAnimation()}
+    }
+
+    // click multiplier upgrade
+    function clickB(){
+      if (clicks >= cost1) {
+      clickGain++
+      clicks -= cost1
+      cost1 *= 2
+      document.getElementById("storeText").innerHTML ="Click Multiplier - cost: " + cost1
+      } else if (clicks >= 0) {
+        document.getElementById("b2").style.animation = "pulse2 2s infinite, poverty 2s 1"
+        setTimeout(function Reanimate(){document.getElementById("b2").style.animation = "pulse2 2s infinite"}, 2000)
+      } else {clicks += (cost1 / 2)
+        document.getElementById("b2").style.animation = "pulse2 2s infinite, poverty 2s 1"
+        setTimeout(function Reanimate(){document.getElementById("b2").style.animation = "pulse2 2s infinite"}, 2000)
+      }
+  }
+    
+// the update function, to update counters every 10 milliseconds
+   function update(){
+      document.getElementById("gainCounter").innerHTML =clickGain + "x"
+      document.getElementById("counter").innerHTML =clicks + " clicks"
+    }
+     setInterval(update, 10)
+
+// text with animation
+  function typeAnimation(){
+  if (i < txt.length) {
+    document.getElementById("message").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeAnimation, speed);
+  }
+ if (clicks == 25) {document.getElementById("message").innerHTML=" " 
+ txt="The Shop has been opened."
+ i=0
+ document.getElementById("b2").style.display = "inline-block"
+ document.getElementById("storeText").style.display = "inline-block"
+ document.getElementById("gainCounter").style.display = "inline-block"
+}
+if (clicks >= 85) {
+  document.getElementById("b3").style.display = "inline-block";
+}
+}
+
+    </script>
+    </body>
+</html>
