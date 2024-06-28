@@ -1,0 +1,286 @@
+body {
+    background-color: #1e1e27;
+    overflow: hidden; /*  this hides the scroll bar */
+}
+/* decorative blocks, top and bottom respectively */
+h1 {
+    padding: 10% 100%;
+    display: inline-block;
+    background-color: #2e2e37;
+    position: absolute;
+    left: 0px;
+    top: -33px;
+    z-index: 1;
+}
+h2 {
+    padding: 10% 100%;
+    display: inline-block;
+    background-color: #232336;
+    position: absolute;
+    left: 0px;
+    bottom: -33px;
+    z-index: 1;
+}
+/* magical shop concealers */
+.hide {
+    display: block;
+    padding: 9% 8%;
+    background-color: #232340;
+    position: absolute;
+    left: 5px;
+    bottom: -10px;
+    z-index: 4;
+}
+.hide.b {
+    left: 250px;
+    bottom: -13px;
+}
+/* animations */
+@keyframes redpulse{
+    0%   {background-color: #F00;}
+    50% {background-color: #900;}
+    100% {background-color: #F00;}
+}
+@keyframes yellowpulse{
+    0% {background-color: #aa0;}
+    50% {background-color: #ff3;}
+    100% {background-color: #aa0;}
+}
+@keyframes bluepulse{
+    0% {background-color: #00a;}
+    50% {background-color: #33f;}
+    100% {background-color: #00a;}
+}
+@keyframes textpulseY{
+    0% {color: white;}
+    50% {color: #ff5;}
+    100% {color: white;}
+}
+/* the button */
+.main {
+    border: inset;
+    border-width: 6px;
+    border-color: #777;
+    border-radius: 50%;
+    padding: 80px 80px;
+    display: inline-block;
+    animation-name: redpulse;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    position: absolute;
+    top: 300px;
+    left: 100px;
+    z-index: 2;
+}
+/* counter */
+.counter {
+    font-family: Courier;
+    font-size: 20px;
+    color: white;
+    background-color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-color: gray;
+    position: absolute;
+    top: 5px;
+    z-index: 2;
+    display: block;
+}
+.counter.SMALL {
+    font-family: Courier;
+    font-size: 10px;
+    color: white;
+    background-color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-color: gray;
+    position: absolute;
+    top: 50px;
+    z-index: 2;
+    animation-name: textpulseY;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+.counter.SMALL.B {
+    top: 65px;
+}
+.counter.B {
+    top: 85px;
+}
+/* secondary shop buttons */
+.secondary {
+    border: inset;
+    border-width: 2px;
+    border-color: #777;
+    border-radius: 10%;
+    padding: 10px 15px;
+    display: inline-block;
+    animation-name: yellowpulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    position: absolute;
+    z-index: 2;
+    color: black;
+    font-family: Verdana;
+    font-size: 10px;
+    width: 93px;
+} 
+.tertiary {
+    border: inset;
+    border-width: 2px;
+    border-color: #777;
+    border-radius: 0%;
+    padding: 5px 8px;
+    display: inline-block;
+    animation-name: bluepulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    position: absolute;
+    z-index: 2;
+    color: white;
+    font-family: Verdana;
+    font-size: 10px;
+    left: 275px;
+    width: 120px;
+}
+.quaternary {
+    border: inset;
+    border-width: 1px;
+    border-color: #777;
+    border-radius: 0%;
+    padding: 3px 10px;
+    display: inline-block;
+    position: absolute;
+    z-index: 2;
+    color: white;
+    font-family: Verdana;
+    font-size: 5px;
+    left: 275px;
+    bottom: 56px;
+    background-color: red;
+    width: 60px;
+}
+/* big "SHOP" texts */
+.headS {
+    font-family: Verdana;
+    font-size: 20px;
+    text-decoration: underline;
+    position: absolute;
+    color: white;
+    z-index: 3;
+    bottom: 200px;
+}
+.headS.phaseI {
+    left: 10px;
+}
+.headS.phaseII {
+    left: 275px;
+}
+/* prices and quantities text */
+.prices {
+    font-family: Verdana;
+    font-size: 16px;
+    position: absolute;
+    color: white;
+    z-index: 3;
+    bottom: 85px;
+    left: 105px;
+}
+.prices.B {
+    font-size: 10px;
+    left: 400px;
+    bottom: 68px;
+}
+.prices.C {
+    font-size: 16px;
+    left: 340px;
+    bottom: 130px;
+    display: none;
+}
+/* dialogue */
+p5 {
+    font-family: Courier;
+    font-size: 25px;
+    position: absolute;
+    color: white;
+    z-index: 5;
+    top: 150px;
+    left: 500px;
+}
+/* shop */
+.secondary.u1 {
+    bottom: 150px;
+    left: 10px;
+}
+.secondary.u2 { /* good band */
+    bottom: 110px;
+    left: 10px;
+}
+.secondary.u3 {
+    bottom: 70px;
+    left: 10px;
+}
+/* reset button */
+.reset {
+    border: inset;
+    border-width: 1px;
+    border-color: #333;
+    border-radius: 10%;
+    padding: 2px 2px;
+    display: inline-block;
+    animation-name: redpulse;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    position: absolute;
+    z-index: 2;
+    color: black;
+    font-family: Verdana;
+    font-size: 8px;
+    right: 20px;
+    bottom: 20px;
+}
+/* phase II shop */
+.tertiary.u1 {
+    bottom: 170px;
+}
+.tertiary.u2 {
+    bottom: 145px;
+}
+.tertiary.u3 {
+    bottom: 120px;
+}
+.tertiary.u4 {
+    bottom: 70px;
+}
+.quaternary.u1 {
+    left: 335px;
+    background-color: green;
+}
+/* phase III */
+.counter.S3 {
+    display: none;
+    top: 25px;
+}
+.counter.SMALL.S3 {
+    display: none;
+    top: 50px;
+}
+.counter.SMALL.S3.B {
+    top: 65px;
+}
+
+.secondary.red {
+    animation-name: redpulse;
+    border-radius: 0%;
+    color: white;
+    display: none;
+    width: 100px;
+}
+.secondary.red.t1 {
+    bottom: 160px;
+    left: 230px;
+}
+.secondary.red.t2 {
+    bottom: 120px;
+    left: 230px;
+}
