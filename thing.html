@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="thingCSS.css">
+        <title id="title">Thing</title>
+</head>
+<body>
+    <div class="bg border-dashed">
+        <header>
+            <div class="top-barA"> 
+            <div class="top-barB border-dashed">
+                    <p class="timer small" id="timer">0s</p>
+                    <p class="large bold" id="counterClick">0 clicks</p>
+                    <p class="medium bold shiftup" id="counterCPS">0/second</p>
+            </div>
+            </div>
+        </header>
+    <main>
+        <div class="middle-bar">
+            <button class="button primary" id="primary"><div class="large bold" id="mbtxt"></div></button>
+            <div class="terminal border-dashed">
+                <span class="log" id="echo10">.</span><br><span class="log">.</span><br>
+                <span class="log" id="echo9">.</span><br><span class="log">.</span><br>
+                <span class="log" id="echo8">.</span><br><span class="log">.</span><br>
+                <span class="log" id="echo7">.</span><br><span class="log">.</span><br>
+                <span class="log" id="echo6">.</span><br><span class="log">.</span><br>
+                <span class="log" id="echo5">.</span><br><span class="log">.</span><br>
+                <span class="log" id="echo4">.</span><br><span class="log">.</span><br>
+                <span class="log" id="echo3">.</span><br><span class="log">.</span><br>
+                <span class="log" id="echo2">.</span><br><span class="log">.</span><br>
+                <span class="log" id="echo1">// Idea Terminal</span><br><span class="log">.</span><br>
+                <span class="log" id="echo">welcome</span><span class="dash">|</span>
+            </div>
+        </div>
+            <div class="bottom-bar">
+            <fieldset class="shop" id="shop1">
+                <div class="medium bold label">Clicking</div>
+                <button class="button secondary" id="up1"><div class="modest bold" id="u1">Click Power</div></button>
+                <p class="medium shift" id="u1Shop">Cost: 20</p>
+                <button class="button secondary" id="up2"><div class="modest bold" id="u1">Autoclicker</div></button>
+                <p class="medium shift" id="u2Shop">Cost: 50</p>
+                <button class="button secondary" id="up3"><div class="modest bold" id="u3">New Button</div></button>
+                <p class="medium shift" id="u3Shop">Cost: 1k</p>
+                <button class="button secondary yellow" id="bst1"><div class="modest bold" id="b1">Faster clickers</div></button>
+                <p class="medium shift" id="bstShop">Cost: 3k</p>
+                <button class="button secondary yellow" id="bst2"><div class="modest bold" id="b2">Autobuy</div></button>
+                <p class="medium shift" id="bst2Shop">Cost: 1B</p>
+            </fieldset>
+            <fieldset class="shop" id="shop2">
+                <div class="medium bold label" id="cashCounter">Economy</div>
+                <button class="button secondary blue" id="up4"><div class="modest bold" id="u4">Sell a button</div></button>
+                <p class="medium shift" id="u4Shop">Gain: $2</p>
+                <button class="button secondary blue" id="up5"><div class="modest bold" id="u5">Buy parts</div></button>
+                <p class="medium shift" id="u5Shop">Cost: $5</p>
+                <button class="button secondary blue" id="up6"><div class="modest bold" id="u6">Buy production</div></button>
+                <p class="medium shift" id="u6Shop">Cost: $10</p>
+                    <div class="mini-terminal border-dashed medium">
+                        <p id="avaliableParts">0 avaliable parts</p>
+                        <p id="productionSites">0 sites of production</p>
+                        <p id="counterBPS">0 buttons/s</p>
+                        <p id="efficiency">0% efficiency</p>
+                        <p id="autoBuyStatus">autobuy: waiting for input</p>
+                    </div>
+            </fieldset>
+            <fieldset class="shop" id="shop3">
+                <div class="medium bold label">Industry</div>
+                <button class="button secondary red" id="up7"><div class="modest bold" id="u7">Build workshop</div></button>
+                <p class="medium shift" id="u7Shop">Cost: $5k</p>
+                <button class="button secondary red" id="up8"><div class="modest bold" id="u8">Mine resources</div></button>
+                <p class="medium shift" id="u8Shop">Cost: $100k</p>
+                <button class="button secondary red" id="up9"><div class="modest bold" id="u9">Increase capacity</div></button>
+                <p class="medium shift" id="u9Shop">Cost: $1m</p>
+                <button class="button secondary yellow" id="bst3"><div class="modest bold" id="b1">Blast mining</div></button>
+                <p class="medium shift" id="bst3Shop">Cost: $500k</p>
+                <button class="button secondary yellow" id="bst4"><div class="modest bold" id="b2">Autosell</div></button>
+                <p class="medium shift" id="bst4Shop">Cost: $1k</p>
+            </fieldset>
+            
+    </div>
+    </main>
+</body>
+<script type="text/javascript" src="basicfunctions.js"></script>
+<script type="text/javascript" src="phase1and2.js"></script>
+</html>
