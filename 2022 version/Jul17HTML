@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Clicker game thing</title>
+        <link rel = "stylesheet" href = "7.17.css">
+    </head>
+    <body>
+            <p class = "counter" id = "lol"><span id = "counter"></span> clicks</p>
+            <p4 class = "counter SMALL" id = "lol2"><span id = "counterCPS"></span> cps</p4>
+            <p6 class = "counter SMALL B" id = "lol3">x<span id = "counterMult"></span></p6>
+
+            <p8 class = "counter B">$ <span id = "counterMoney"></span></p8>
+
+            <p9 class = "counter S3" id = "bruh"><span id = "counterButtons"></span> buttons</p9>
+            <p10 class = "counter SMALL S3" id = "bruh2"><span id = "counterBPS"></span> bps</p10>
+            <p11 class = "counter SMALL S3 B" id = "bruh3">x<span id = "counterBMult"></span></p11>
+
+            <h1></h1> <h2></h2> 
+            <h3 class = "hide" id = "shopHide"></h3>
+            <h4 class = "hide b" id = "economyHide"></h4>
+
+            <p2 class = "headS phaseI" id = "lol4">Shop</p2>
+
+            <p3 class = "prices" id = "lol5">
+                x<span id = "clickPower"></span>, cost: <span id = "costU1"></span><br><br>
+                x<span id = "autoClickers"></span>, cost: <span id = "costU2"></span><br><br>
+                x<span id = "buttonsA"></span>, cost: <span id = "costU3"></span>
+            </p3>
+
+            <p8 class = "prices B" id = "s6">
+                x<span id = "materials"></span>, cost: <span id = "costS1"></span><br><br>
+                x<span id = "producers"></span>, cost: <span id = "costS2"></span><br><br><br><br><br>
+                <span id = "autosellBought"></span>
+            </p8>
+
+            <p12 class = "prices C" id = "f2">
+                x<span id = "factories"></span>, cost: <span id = "costF1"></span><br><br>
+                x<span id = "aSellUpgrades"></span>, cost: <span id = "costF2"></span>
+            </p12>
+
+            <button class = "main" id = "main"></button>
+            <button class = "secondary u1" id = "up1">Click Power</button>
+            <button class = "secondary u2" id = "up2">Autoclicker</button>
+            <button class = "secondary u3" id = "up3">New Button</button>
+
+            <button class = "tertiary u1" id = "s1">Sell Button</button>
+            <button class = "tertiary u2" id = "s2">Button Parts</button>
+            <button class = "tertiary u3" id = "s3">Button Production</button>
+            <button class = "tertiary u4" id = "s4">Auto-Sell</button>
+
+            <button class = "quaternary u1" id = "autoSGo">GO</button>
+            <button class = "quaternary u2" id = "autoSStop">STOP</button>
+
+            <button class = "secondary red t1" id = "f1">Build Factory</button>
+            <button class = "secondary red t2" id = "f3">Marketing</button>
+
+            <p5 id = "txt"></p5>
+            <p7 class = "headS phaseII" id = "s5">Economy</p7>
+            <button class = "reset" id = "reset">Reset</button>
+        <script>
+            var trueClicks = 0;
+            var clickPS = 0;
+            var clicks = 0;
+
+            var grandProgression = 0;
+            //scary
+
+            console.log("Here to cheat, ay? \n\nWell, I am not against that. Go along. \nSome commands:\n clicks = 1e+20;\n multiplier = 1e+20; \n cpsRAWUP = 1e+20; \n moneys = 1e+20;");
+            // if you open the console, THEY KNOW
+
+            // if stored data exists, load it, else start at poverty
+            if (localStorage.getItem("clickStorage")){
+              clicks = parseInt(localStorage.getItem("clickStorage"));
+              } else{
+                clicks = 0;
+                }
+
+            /*if (localStorage.getItem("upgradeStorageA")){
+                storedArrayA = json.parse(localStorage.getItem("upgradeStorageA"));
+                clickPower = storedArrayA[0];
+                up1Cost = storedArrayA[1];
+            } else{
+                clickPower = 1;
+                up1Cost = 5;
+            }*/
+                document.getElementById("counter").innerHTML = trueClicks;
+
+            const clickA = () => {
+                clicks += clickPower;
+            }
+            function update() {
+                clicks += (clickPS/60);
+                trueClicks = Math.round(clicks);
+                trueButtons = Math.round(multiplier);
+                document.getElementById("counter").innerHTML = trueClicks;
+                document.getElementById("counterCPS").innerHTML = clickPS;
+                document.getElementById("counterMult").innerHTML = trueButtons;
+                localStorage.setItem("clickStorage", clicks);
+            }
+            setInterval(update, 1);
+            document.getElementById("main").addEventListener("click", clickA);
+            document.getElementById("reset").addEventListener("click", reset);
+
+            function reset() {
+                clicks = 0; trueClicks = 0; clickPS = 0; autoClickers = 0; clickPower = 1;
+                clickPower = 1; up1Cost = 5; up2Cost = 50; up3Cost = 5000; autoClickers = 0;
+                multiplier = 1; up2G = 60; dia = 0; dialogue = " "; cpsRAWUP = 0; 
+                clickPowerRAW = 1; moneys = 0; upS2Cost = 5; upS3Cost = 5; buttonParts = 0;
+                bpGain = 10; buttonsPS = 0; go = false;  autosellBought = false; brug = " "
+                sellPotency = 1; outputPotency = 5; bpsEqFix = 0; bMultiplier = 1; clickPowerB = 1;
+                buttonFactories =  0; autosellUpgrades = 1; costF1 = 1000; costF2 = 5000;
+                document.getElementById("autosellBought").innerHTML = "cost: 50";
+            }
+
+            //Stage I Shop
+
+            var clickPower = 1;
+            var up1Cost = 5;
+            var up2Cost = 50;
+            var up3Cost = 5000;
+            var autoClickers = 0;
+            var multiplier = 1; // or amount of buttons
+            var up2G = 60; // potency of the autoclicker, in cps
+
+            var cpsRAWUP = 0; // up2G but unfazed by multiplier
+            var clickPowerRAW = 1; // clickPower unfazed by mult
+
+            // Click Power upgrade
+            function buyA(){
+                if (trueClicks >= up1Cost) {
+                    clicks -= up1Cost;
+                    clickPower++;
+                    up1Cost += (clickPower^3);
+                    Math.round(up1Cost);
+                    clickPowerRAW++;
+                }
+            }
+
+            // Autoclicker upgrade
+            function buyB(){
+                if (trueClicks >= up2Cost) {
+                    clicks -= up2Cost;
+                    autoClickers++;
+                    up2Cost += (autoClickers^3)*2;
+                    Math.round(up2Cost);
+                    clickPS += up2G;
+                    cpsRAWUP += 60;
+                }
+            }
+            
+            // Buy a new button
+            function buyC(){
+                if (trueClicks >= up3Cost) {
+                    clicks -= up3Cost;
+                    up3Cost *= 16;
+                    Math.round(up3Cost);
+                    multiplier++;
+                    clickPower *= multiplier;
+                    up2G *= multiplier;
+                    clickPS *= multiplier;
+                }
+            }
+            document.getElementById("up1").addEventListener("click", buyA);
+            document.getElementById("up2").addEventListener("click", buyB);
+            document.getElementById("up3").addEventListener("click", buyC);
+
+            function phase1Update(){
+                document.getElementById("costU1").innerHTML = up1Cost;
+                document.getElementById("clickPower").innerHTML = clickPower;
+                document.getElementById("costU2").innerHTML = up2Cost;
+                document.getElementById("autoClickers").innerHTML = autoClickers;
+                document.getElementById("costU3").innerHTML = up3Cost;
+                document.getElementById("buttonsA").innerHTML = trueButtons;
+                if (grandProgression == 1) {
+                   document.getElementById("shopHide").style.display = "none";
+                  }
+        }
+
+            var eggs = 0;
+            var dialogue = " "
+            var dia = 0;
+            setInterval(phase1Update,1);
+            setInterval(things, 1);
+        
+            function things (){
+            if (trueClicks >= 10 && dia == 0) {
+                //dialogue = "Hello!";
+                document.getElementById("txt").innerHTML = dialogue;
+                dia++;
+            }
+            if (trueClicks >= 20 && dia == 1) {
+                //dialogue = "I am your AI assistant.";
+                document.getElementById("txt").innerHTML = dialogue;
+                dia++;
+            }
+            if (trueClicks >= 30 && dia == 2) {
+                //dialogue = "Your duty.. is to click the button. \n Perhaps it would be more efficient with a shop?";
+                document.getElementById("txt").innerHTML = dialogue;
+                grandProgression = 1;
+                dia++;
+            }
+            if (trueButtons >= 2 && dia == 3) {
+                //dialogue = "Buttons increase your growth exponentially, but they are expensive.."
+                document.getElementById("txt").innerHTML = dialogue;
+                dia++;
+            } 
+            if (trueButtons >= 3 && dia == 4) {
+                //dialogue = "Perhaps there is a wiser route than this. Sell the buttons, we can make society do the work."
+                document.getElementById("txt").innerHTML = dialogue;
+                grandProgression = 2;
+                dia++;
+            }
+            if (trueButtons >= 100 && dia == 5 || moneys >= 300 && dia == 5) {
+                //dialogue = "Let us face it; we'll need a lot more buttons than this."
+                document.getElementById("txt").innerHTML = dialogue;
+                grandProgression = 3;
+                dia++;
+            }
+            if (trueButtons >= 200 && dia == 6) {
+                //dialogue = "Pro tip; hold enter on a button. You get up to thirty clicks a second!"
+                document.getElementById("txt").innerHTML = dialogue;
+                dia++;
+            }
+        }
+
+            // Stage II Shop
+
+            var moneys = 0;
+
+            var upS2Cost = 5;
+            var upS3Cost = 5;
+
+            var buttonParts = 0;
+            var buttonPartsDisplayed = 0;
+            var bpGain = 10;
+
+            var buttonsPS = 0;
+            var autosellBought = false;
+            var brug = " "
+
+            var outputPotency = 5;
+            var bpPotency = 1;
+
+            document.getElementById("autosellBought").innerHTML = "cost: 50";
+
+            // sell a button, capitalism
+            function sellA(){
+                if(multiplier > 1){
+                multiplier -= 1;
+                clickPS /= 2;
+                up2G /= 2;
+                clickPower /= 2;
+                moneys += outputPotency;
+                }
+            }
+
+            // buy button parts
+            function buy2A(){
+                if (moneys >= upS2Cost){
+                    moneys -= upS2Cost;
+                    buttonParts += bpGain;
+                    upS2Cost += 10;
+                    Math.round(upS2Cost);
+                    bpGain += 10;
+                }
+            }
+            // buy button producer
+            function buy2B(){
+                if (moneys >= upS3Cost){
+                    moneys -= upS3Cost;
+                    buttonsPS += bpPotency;
+                    upS3Cost += 20;
+                    Math.round(upS3Cost);
+                }
+            }
+
+            // buy auto-sell
+            function buy2C(){
+                if (moneys >= 50 && autosellBought == false){
+                    moneys -= 50;
+                    autosellBought = true;
+                    document.getElementById("autosellBought").innerHTML = "bought";
+            }
+        }
+
+            // validate if buttons can be made
+            var go = false;
+            
+            function checkButton(){
+                buttonParts -= (buttonsPS/60);
+                if (buttonParts > 0.1){
+                    go = true;
+                } else {
+                    go = false;
+                }
+                if (buttonParts <= 0){
+                    buttonParts = 0;
+                }
+            }
+
+            // auto-sell buttons
+            function sellB() {
+                if(multiplier > 10 && autosellBought == true){
+                    sellA();
+                }
+            }
+
+            function sellGO(){
+                brug = setInterval(sellB, 1);
+                document.getElementById("s4").style.background = "green";
+                document.getElementById("s4").style.animation = "none";
+            }
+
+            function sellSTOP(){
+                clearInterval(brug);
+                brug = 0;
+                document.getElementById("s4").style.background = "red";
+                document.getElementById("s4").style.animation = "none";
+            }
+
+            document.getElementById("s1").addEventListener("click", sellA);
+            document.getElementById("s2").addEventListener("click", buy2A);
+            document.getElementById("s3").addEventListener("click", buy2B);
+            document.getElementById("s4").addEventListener("click", buy2C);
+
+            document.getElementById("autoSGo").addEventListener("click", sellGO);
+            document.getElementById("autoSStop").addEventListener("click", sellSTOP);
+
+            function phase2Update() {
+                document.getElementById("counterMoney").innerHTML = moneys;
+                document.getElementById("costS1").innerHTML = upS2Cost;
+                buttonPartsDisplayed = Math.round(buttonParts);
+                document.getElementById("materials").innerHTML = buttonPartsDisplayed;
+                document.getElementById("costS2").innerHTML = upS3Cost;
+                document.getElementById("producers").innerHTML = buttonsPS;
+
+                if (go){
+                    multiplier += (buttonsPS/60);
+            }
+                clickPS = Math.round(cpsRAWUP * multiplier);
+                clickPower = Math.round(clickPowerRAW * multiplier);
+
+                if (grandProgression == 2) {
+                   document.getElementById("economyHide").style.display = "none";
+            }
+        }
+
+            function softLockCheck(){
+                if (moneys == 0 && buttonsPS == 4 && upS2Cost == 25){
+                    //dialogue = "Pity. You almost ended up softlocking yourself. Be wiser next time."
+                    document.getElementById("txt").innerHTML = dialogue;
+                    moneys = 25;
+                }
+            }
+
+            setInterval(phase2Update, 1);
+            setInterval(checkButton, 1);
+            setInterval(softLockCheck, 1);
+
+            // Stage III
+
+            // disable the shop, disable the click counter, move economy left, add button counter
+
+            function disable(){
+                if (grandProgression == 3){
+                document.getElementById("lol").style.display = "none";
+                document.getElementById("lol2").style.display = "none";
+                document.getElementById("lol3").style.display = "none";
+                document.getElementById("lol4").style.display = "none";
+                document.getElementById("lol5").style.display = "none";
+                document.getElementById("up1").style.display = "none";
+                document.getElementById("up2").style.display = "none";
+                document.getElementById("up3").style.display = "none";
+                document.getElementById("s1").style.left = "10px";
+                document.getElementById("s2").style.left = "10px";
+                document.getElementById("s3").style.left = "10px";
+                document.getElementById("s4").style.left = "10px";
+                document.getElementById("s5").style.left = "10px";
+                document.getElementById("s6").style.left = "135px";
+                document.getElementById("autoSGo").style.left = "70px";
+                document.getElementById("autoSStop").style.left = "10px";
+                document.getElementById("bruh").style.display = "block";
+                document.getElementById("bruh2").style.display = "block";
+                document.getElementById("bruh3").style.display = "block";
+                document.getElementById("f1").style.display = "block";
+                document.getElementById("f2").style.display = "block";
+                document.getElementById("f3").style.display = "block";
+
+                document.getElementById("main").removeEventListener("click", clickA);
+                document.getElementById("main").addEventListener("click", clickB);
+                document.getElementById("f3").addEventListener("click", buy3B);
+                }
+            }
+
+            var bpsEqFix = 0;
+            var bMultiplier = 1;
+            var clickPowerB = 1;
+            var buttonFactories =  0;
+            var autosellUpgrades = 1;
+
+            var costF1 = 1000;
+            var costF2 = 5000;
+
+            // lets the buttons/s counter stop when button parts are exhausted
+
+            function bpsFix(){
+                if (buttonParts == 0){
+                    bpsEqFix = buttonsPS;
+                } else {
+                    bpsEqFix = 0;
+                }
+            }
+
+            function clickB(){
+                multiplier += clickPowerB;
+            }
+
+            function buy3A(){
+                if (moneys >= costF1){
+                    moneys -= costF1;
+                    costF1 += 2000;
+                    clickPowerB *= bMultiplier;
+                    bMultiplier++;
+                    bpGain *= bMultiplier;
+                    buttonsPS *= bMultiplier;
+                    buttonFactories++;
+                    bpPotency *= bMultiplier;
+                }
+            }
+
+            function buy3B(){
+                if (moneys >= costF2){
+                    moneys -= costF2;
+                    costF2 += 2000;
+                    outputPotency *= 2;
+                    autosellUpgrades++;
+                }
+            }
+
+                document.getElementById("f1").addEventListener("click",buy3A);
+            function phase3Update(){
+                document.getElementById("counterButtons").innerHTML = Math.round(multiplier);
+                document.getElementById("counterBPS").innerHTML = buttonsPS - bpsEqFix;
+                document.getElementById("counterBMult").innerHTML = bMultiplier;
+                document.getElementById("factories").innerHTML =  buttonFactories;
+                document.getElementById("costF1").innerHTML = costF1;
+                document.getElementById("aSellUpgrades").innerHTML =  autosellUpgrades;
+                document.getElementById("costF2").innerHTML = costF2;
+
+                // autosell becomes very potent and rolls to negatives, this negates it
+                if (trueButtons < 0) {
+                    multiplier = 0;
+                    trueButtons = 0;
+                } 
+            }
+
+            // the holy abbreviator 
+
+            /* IDs for html elements: 
+            Counters:
+
+            Prices:
+                x 'materials', cost 'costS1'
+                x 'producers', cost 'costS2'
+            */
+            function abbreviate(){
+                }
+
+            setInterval(disable, 1);
+            setInterval(phase3Update, 1);
+            setInterval(bpsFix, 1);
+            setInterval(abbreviate, 1);
+        </script>
+    </body>
+</html>
